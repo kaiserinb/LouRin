@@ -4,9 +4,10 @@ import {
 collection,
 query,
 orderBy,
-onSnapshot
+onSnapshot,
+addDoc,
+serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
 const db = window.firebaseDB;
 
 const currentUser =
