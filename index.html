@@ -1,5 +1,5 @@
 <!--
-Version: 0.1.0
+Version: 0.3.6
 File: index.html
 Project: LouRin
 -->
@@ -29,16 +29,16 @@ rel="stylesheet">
 
 </head>
 
+
 <body>
+
 
 <!-- Loading Screen -->
 
 <div id="loadingScreen">
 
 <div class="heart">
-
 ❤️
-
 </div>
 
 <h1>LouRin</h1>
@@ -47,45 +47,62 @@ rel="stylesheet">
 
 </div>
 
+
+
 <!-- Main App -->
 
 <div id="app">
+
+
 
 <!-- HOME -->
 
 <section id="home" class="page active">
 
+
 <div class="homeHeader">
 
 <h1>❤️ LouRin</h1>
 
-<p id="greeting">Hi, baby! ❤️</p>
+<p id="greeting">
+Hi, baby! ❤️
+</p>
 
 </div>
+
 
 <div class="card">
 
 <h3>💕 Next Hangout</h3>
 
-<p>No hangout scheduled yet.</p>
+<p>
+No hangout scheduled yet.
+</p>
 
 </div>
+
 
 <div class="card">
 
 <h3>🔥 Current Streak</h3>
 
-<h2>0 Days</h2>
+<h2>
+0 Days
+</h2>
 
 </div>
+
 
 <div class="card">
 
 <h3>📸 Today's Updates</h3>
 
-<h2>0 / 3</h2>
+<h2>
+0 / 3
+</h2>
 
 </div>
+
 
 <div class="card">
 
@@ -100,6 +117,7 @@ Missions Completed: 0
 
 </div>
 
+
 <div class="card">
 
 <h3>💌 Secret Note</h3>
@@ -112,19 +130,23 @@ Tap to Reveal ❤️
 
 </div>
 
+
 <div class="card">
 
 <h3>🌸 Daily Quote</h3>
 
 <p>
-
 "Every memory begins with a moment."
-
 </p>
 
 </div>
 
+
 </section>
+
+
+
+
 
 <!-- UPDATES -->
 
@@ -132,36 +154,62 @@ Tap to Reveal ❤️
 
 <h2>📸 Updates</h2>
 
-<p>Coming soon...</p>
+<p>
+Coming soon...
+</p>
 
 </section>
+
+
+
+
 
 <!-- MESSAGES -->
 
 <section id="messages" class="page">
 
+
 <div id="messageList">
 
-<h2>💬 Messages</h2>
+<h2>
+💬 Messages
+</h2>
+
 
 <div class="contactCard" onclick="openChat()">
 
+
 <div>
 
-<h3 id="partnerName">❤️ Partner</h3>
+<h3 id="partnerName">
+❤️ Partner
+</h3>
 
-<p>Tap to open conversation</p>
+
+<p>
+Tap to open conversation
+</p>
+
 
 </div>
 
-<span>💬</span>
+
+<span>
+💬
+</span>
+
 
 </div>
 
+
 </div>
+
+
+
 
 
 <div id="chatBox" style="display:none;">
+
 
 <button class="backButton" onclick="closeChat()">
 
@@ -169,81 +217,91 @@ Tap to Reveal ❤️
 
 </button>
 
-<h2 id="chatTitle">❤️ Partner</h2>
+
+<h2 id="chatTitle">
+❤️ Partner
+</h2>
+
+
 
 <div id="chatMessages">
 
-<!-- Messages from Firebase will appear here -->
+<!-- Messages from Firebase appear here -->
+
+</div>
+
+
+
+<div class="messageInput" id="normalInput">
+
+
+<button id="kissToggle">
+
+💋
+
+</button>
+
+
+<input
+id="textMessage"
+type="text"
+placeholder="Type a message...">
+
+
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+
+</div>
+
+
+
+<div id="kissMode" style="display:none;">
+
+
+<button id="kissButton">
+
+💋
+
+</button>
+
+
+<div id="kissCount">
+
+0×
+
+</div>
+
+
+<p>
+Tap kisses
+</p>
+
 
 </div>
 
 
 
 </div>
-
-</section>
 <!-- HANGOUT -->
 
 <section id="hangout" class="page">
 
 <h2>📅 Hangout</h2>
 
-<p>Coming soon...</<div c<div class="messageInput" id="normalInput">
-
-<button id="kissToggle">
-💋
-</button>
-
-<input
-id="textMessage"
-type="text"
-placeholder="Type a message...">
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-
-<div id="kissMode" style="display:none;">
-
-<button id="kissButton">
-💋
-</button>
-
-<div id="kissCount">
-0×
-</div>
-
-<p>Tap kisses</p>
-
-</div>lass="messageInput">
-
-<input
-id="textMessage"
-type="text"
-placeholder="Type a message...">
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-<div id="kissArea">
-
-<button id="kissButton">
-💋
-</button>
-
-<div id="kissCount">
-0×
-</div>
-
-</div>p>
+<p>
+Coming soon...
+</p>
 
 </section>
+
+
+
+
 
 <!-- DIARY -->
 
@@ -251,9 +309,15 @@ Send
 
 <h2>📖 Our Diary</h2>
 
-<p>Coming soon...</p>
+<p>
+Coming soon...
+</p>
 
 </section>
+
+
+
+
 
 <!-- NOTIFICATIONS -->
 
@@ -261,9 +325,15 @@ Send
 
 <h2>🔔 Notifications</h2>
 
-<p>Coming soon...</p>
+<p>
+Coming soon...
+</p>
 
 </section>
+
+
+
+
 
 <!-- SETTINGS -->
 
@@ -271,73 +341,112 @@ Send
 
 <h2>⚙️ Settings</h2>
 
-<p>Coming soon...</p>
+<p>
+Coming soon...
+</p>
 
 </section>
+
+
+
+
 
 <!-- Bottom Navigation -->
 
 <nav>
 
+
 <button onclick="showPage('home')" class="navButton activeNav">
 
 <span>🏠</span>
 
-<small>Home</small>
+<small>
+Home
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('updates')" class="navButton">
 
 <span>📸</span>
 
-<small>Updates</small>
+<small>
+Updates
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('messages')" class="navButton">
 
 <span>💬</span>
 
-<small>Messages</small>
+<small>
+Messages
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('hangout')" class="navButton">
 
 <span>📅</span>
 
-<small>Hangout</small>
+<small>
+Hangout
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('diary')" class="navButton">
 
 <span>📖</span>
 
-<small>Diary</small>
+<small>
+Diary
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('notifications')" class="navButton">
 
 <span>🔔</span>
 
-<small>Alerts</small>
+<small>
+Alerts
+</small>
 
 </button>
+
+
 
 <button onclick="showPage('settings')" class="navButton">
 
 <span>⚙️</span>
 
-<small>Settings</small>
+<small>
+Settings
+</small>
 
 </button>
 
+
 </nav>
-  
+
+
+
 </div>
+
+
+
 
 <script type="module" src="firebase.js"></script>
 
@@ -352,7 +461,12 @@ Send
 <script src="notifications.js"></script>
 
 <script src="diary.js"></script>
-  
+
+
 </body>
 
-</html>
+  </html>
+
+</section>
+
+  
