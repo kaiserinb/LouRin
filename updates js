@@ -1,4 +1,4 @@
-console.log("Updates JS loaded");
+alert("Updates JS loaded");
 
 
 const addUpdateButton = document.getElementById("addUpdateButton");
