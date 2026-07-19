@@ -51,4 +51,9 @@ serverTimestamp
 
 };
 
+// Make Firebase available to other files
+
+window.firebaseApp = app;
+window.firebaseDB = db;
+
 console.log("❤️ Firebase Ready");
