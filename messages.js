@@ -1,7 +1,20 @@
-// LouRin Messages v0.3.2
+// LouRin Messages v0.3.3
 
-console.log("💬 Messages loaded.");
+import {
+collection,
+query,
+orderBy,
+onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-console.log(window.firebaseDB);
+const db = window.firebaseDB;
 
-console.log(window.firebaseTools);
+const messagesRef = collection(db, "chats", "lourin", "messages");
+
+const messagesQuery = query(messagesRef, orderBy("time"));
+
+onSnapshot(messagesQuery, (snapshot) => {
+
+    console.log("Messages:", snapshot.size);
+
+});
