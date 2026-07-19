@@ -155,6 +155,36 @@ if (kissButton) {
 
 }
 
+async function sendKisses(amount){
+
+    if(amount === 0) return;
+
+
+    await addDoc(
+        collection(db,"chats","lourin","messages"),
+        {
+
+            sender: currentUser,
+
+            text:
+            "💋💋💋\n" +
+            amount +
+            " kisses sent",
+
+            time: serverTimestamp(),
+
+            type:"kiss"
+
+        }
+    );
+
+
+    kissCount = 0;
+
+    kissDisplay.innerHTML = "0×";
+
+}
+
 const backToMessage =
 document.getElementById("backToMessage");
 
