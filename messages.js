@@ -52,3 +52,29 @@ chatBox.appendChild(bubble);
 chatBox.scrollTop=chatBox.scrollHeight;
 
 });
+
+window.sendMessage = async function () {
+
+    const input = document.getElementById("textMessage");
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    await addDoc(collection(db, "chats", "lourin", "messages"), {
+
+        sender: currentUser,
+
+        text: text,
+
+        time: serverTimestamp(),
+
+        edited: false,
+
+        type: "text"
+
+    });
+
+    input.value = "";
+
+};
