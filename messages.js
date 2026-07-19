@@ -99,9 +99,12 @@ if (kissToggle) {
 
 }
 
-// Kiss Counter
+// Kiss Counter + Auto Send
 
 let kissCount = 0;
+
+let kissTimer;
+
 
 const kissButton =
 document.getElementById("kissButton");
@@ -114,6 +117,7 @@ if (kissButton) {
 
     kissButton.onclick = () => {
 
+
         if (kissCount < 999) {
 
             kissCount++;
@@ -122,6 +126,17 @@ if (kissButton) {
             kissCount + "×";
 
         }
+
+
+        clearTimeout(kissTimer);
+
+
+        kissTimer = setTimeout(()=>{
+
+            sendKisses(kissCount);
+
+        },1000);
+
 
 
         kissButton.style.transform =
@@ -134,6 +149,7 @@ if (kissButton) {
             "scale(1)";
 
         },100);
+
 
     };
 
