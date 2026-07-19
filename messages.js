@@ -1,4 +1,4 @@
-// LouRin Messages v0.3.3
+// LouRin v0.3.4 - Messages
 
 import {
 collection,
@@ -9,12 +9,45 @@ onSnapshot
 
 const db = window.firebaseDB;
 
-const messagesRef = collection(db, "chats", "lourin", "messages");
+const currentUser =
+new URLSearchParams(window.location.search).get("user") || "kaiserin";
 
-const messagesQuery = query(messagesRef, orderBy("time"));
+const chatBox =
+document.getElementById("chatMessages");
 
-onSnapshot(messagesQuery, (snapshot) => {
+const messagesRef =
+collection(db, "chats", "lourin", "messages");
 
-    console.log("Messages:", snapshot.size);
+const q =
+query(messagesRef, orderBy("time"));
+
+onSnapshot(q, (snapshot)=>{
+
+chatBox.innerHTML="";
+
+snapshot.forEach((doc)=>{
+
+const data=doc.data();
+
+if(data.placeholder) return;
+
+const bubble=document.createElement("div");
+
+bubble.className =
+data.sender===currentUser
+? "message sent"
+: "message received";
+
+bubble.innerHTML=`
+
+${data.text}
+
+`;
+
+chatBox.appendChild(bubble);
+
+});
+
+chatBox.scrollTop=chatBox.scrollHeight;
 
 });
