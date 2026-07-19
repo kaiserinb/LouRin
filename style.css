@@ -381,7 +381,7 @@ justify-content:center;
 
 position:fixed;
 
-bottom:85px;
+bottom:120px;
 
 left:20px;
 
@@ -389,11 +389,30 @@ right:20px;
 
 background:white;
 
-padding:25px;
+padding:30px;
 
 border-radius:22px;
 
 box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+
+#backToMessage{
+
+align-self:flex-start;
+
+border:none;
+
+background:#C63D3D;
+
+color:white;
+
+padding:8px 14px;
+
+border-radius:15px;
+
+margin-bottom:20px;
 
 }
 
