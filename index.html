@@ -140,12 +140,71 @@ Tap to Reveal ❤️
 
 <section id="messages" class="page">
 
+<div id="messageList">
+
 <h2>💬 Messages</h2>
 
-<p>Coming soon...</p>
+<div class="contactCard" onclick="openChat()">
+
+<div>
+
+<h3 id="partnerName">❤️ Partner</h3>
+
+<p>Tap to open conversation</p>
+
+</div>
+
+<span>💬</span>
+
+</div>
+
+</div>
+
+
+<div id="chatBox" style="display:none;">
+
+<button class="backButton" onclick="closeChat()">
+
+← Back
+
+</button>
+
+<h2 id="chatTitle">❤️ Partner</h2>
+
+<div id="chatMessages">
+
+<div class="message received">
+
+Hello ❤️
+
+</div>
+
+<div class="message sent">
+
+Hi baby! ❤️
+
+</div>
+
+</div>
+
+<div class="messageInput">
+
+<input
+id="textMessage"
+type="text"
+placeholder="Type a message...">
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+</div>
+
+</div>
 
 </section>
-
 <!-- HANGOUT -->
 
 <section id="hangout" class="page">
