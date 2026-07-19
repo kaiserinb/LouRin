@@ -1,10 +1,178 @@
+<!--
+Version: 0.1.0
+File: index.html
+Project: LouRin
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>LouRin</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>LouRin ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
 </head>
+
 <body>
-    <h1>Hi, babyyyy!!</h1>
-    <p>sending kisses mwa</p>
+
+<!-- Loading Screen -->
+
+<div id="loadingScreen">
+
+<div class="heart">
+
+❤️
+
+</div>
+
+<h1>LouRin</h1>
+
+<p>made for two hearts.</p>
+
+</div>
+
+<!-- Main App -->
+
+<div id="app">
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<h2>🏠 Home</h2>
+
+<p>Welcome to LouRin.</p>
+
+</section>
+
+<!-- UPDATES -->
+
+<section id="updates" class="page">
+
+<h2>📸 Updates</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- MESSAGES -->
+
+<section id="messages" class="page">
+
+<h2>💬 Messages</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- HANGOUT -->
+
+<section id="hangout" class="page">
+
+<h2>📅 Hangout</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- DIARY -->
+
+<section id="diary" class="page">
+
+<h2>📖 Our Diary</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- NOTIFICATIONS -->
+
+<section id="notifications" class="page">
+
+<h2>🔔 Notifications</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- SETTINGS -->
+
+<section id="settings" class="page">
+
+<h2>⚙️ Settings</h2>
+
+<p>Coming soon...</p>
+
+</section>
+
+<!-- Bottom Navigation -->
+
+<nav>
+
+<button onclick="showPage('home')">
+
+🏠
+
+</button>
+
+<button onclick="showPage('updates')">
+
+📸
+
+</button>
+
+<button onclick="showPage('messages')">
+
+💬
+
+</button>
+
+<button onclick="showPage('hangout')">
+
+📅
+
+</button>
+
+<button onclick="showPage('diary')">
+
+📖
+
+</button>
+
+<button onclick="showPage('notifications')">
+
+🔔
+
+</button>
+
+<button onclick="showPage('settings')">
+
+⚙️
+
+</button>
+
+</nav>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
