@@ -1,43 +1,38 @@
 console.log("Updates JS loaded");
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("click", function(e){
 
 
-const addUpdateButton =
-document.getElementById("addUpdateButton");
+    if(e.target && e.target.id === "addUpdateButton"){
+
+        const creator =
+        document.getElementById("updateCreator");
 
 
-const updateCreator =
-document.getElementById("updateCreator");
+        if(creator){
 
+            creator.style.display = "block";
 
-const cancelUpdateButton =
-document.getElementById("cancelUpdateButton");
+        }
 
-
-
-if(addUpdateButton && updateCreator){
-
-    addUpdateButton.onclick = () => {
-
-        updateCreator.style.display = "block";
-
-    };
-
-}
+    }
 
 
 
-if(cancelUpdateButton && updateCreator){
+    if(e.target && e.target.id === "cancelUpdateButton"){
 
-    cancelUpdateButton.onclick = () => {
+        const creator =
+        document.getElementById("updateCreator");
 
-        updateCreator.style.display = "none";
 
-    };
+        if(creator){
 
-}
+            creator.style.display = "none";
+
+        }
+
+    }
 
 
 });
