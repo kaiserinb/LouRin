@@ -1,20 +1,40 @@
-alert("Updates JS loaded");
+/*
+Version: 0.4.0
+File: updates.js
+Project: LouRin
+*/
+
+window.addEventListener("load", () => {
 
 
-const addUpdateButton = document.getElementById("addUpdateButton");
-const updateCreator = document.getElementById("updateCreator");
-const cancelUpdateButton = document.getElementById("cancelUpdateButton");
+const addButton = document.getElementById("addUpdateButton");
+const creator = document.getElementById("updateCreator");
+const cancelButton = document.getElementById("cancelUpdateButton");
 
 
-addUpdateButton.onclick = function(){
+if(!addButton || !creator || !cancelButton){
 
-    updateCreator.style.display = "block";
+    console.log("Updates elements missing");
+    return;
 
-};
+}
 
 
-cancelUpdateButton.onclick = function(){
 
-    updateCreator.style.display = "none";
+addButton.addEventListener("click", () => {
 
-};
+    creator.style.display = "block";
+
+});
+
+
+
+cancelButton.addEventListener("click", () => {
+
+    creator.style.display = "none";
+
+});
+
+
+
+});
