@@ -1,16 +1,23 @@
 console.log("Updates JS loaded");
 
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
 const addUpdateButton =
 document.getElementById("addUpdateButton");
 
+
 const updateCreator =
 document.getElementById("updateCreator");
+
 
 const cancelUpdateButton =
 document.getElementById("cancelUpdateButton");
 
 
-if(addUpdateButton){
+
+if(addUpdateButton && updateCreator){
 
     addUpdateButton.onclick = () => {
 
@@ -21,7 +28,8 @@ if(addUpdateButton){
 }
 
 
-if(cancelUpdateButton){
+
+if(cancelUpdateButton && updateCreator){
 
     cancelUpdateButton.onclick = () => {
 
@@ -30,3 +38,6 @@ if(cancelUpdateButton){
     };
 
 }
+
+
+});
