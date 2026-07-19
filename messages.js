@@ -115,3 +115,43 @@ if (backToMessage) {
     };
 
 }
+
+// Kiss Counter
+
+let kissCount = 0;
+
+const kissButton =
+document.getElementById("kissButton");
+
+const kissDisplay =
+document.getElementById("kissCount");
+
+
+if (kissButton) {
+
+    kissButton.onclick = () => {
+
+        if (kissCount < 999) {
+
+            kissCount++;
+
+            kissDisplay.innerHTML =
+            kissCount + "×";
+
+        }
+
+
+        kissButton.style.transform =
+        "scale(0.9)";
+
+
+        setTimeout(()=>{
+
+            kissButton.style.transform =
+            "scale(1)";
+
+        },100);
+
+    };
+
+            }
