@@ -166,14 +166,11 @@ async function sendKisses(amount){
 
             sender: currentUser,
 
-            text:
-            "💋💋💋\n" +
-            amount +
-            " kisses sent",
+            type:"kiss",
 
-            time: serverTimestamp(),
+            amount: amount,
 
-            type:"kiss"
+            time: serverTimestamp()
 
         }
     );
