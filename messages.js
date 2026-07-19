@@ -78,3 +78,23 @@ window.sendMessage = async function () {
     input.value = "";
 
 };
+// Kiss Mode Toggle
+
+const kissToggle = document.getElementById("kissToggle");
+
+const normalInput = document.getElementById("normalInput");
+
+const kissMode = document.getElementById("kissMode");
+
+
+if (kissToggle) {
+
+    kissToggle.onclick = () => {
+
+        normalInput.style.display = "none";
+
+        kissMode.style.display = "flex";
+
+    };
+
+}
