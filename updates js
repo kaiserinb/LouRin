@@ -1,1 +1,30 @@
+const addUpdateButton =
+document.getElementById("addUpdateButton");
 
+const updateCreator =
+document.getElementById("updateCreator");
+
+const cancelUpdateButton =
+document.getElementById("cancelUpdateButton");
+
+
+if(addUpdateButton){
+
+    addUpdateButton.onclick = () => {
+
+        updateCreator.style.display = "block";
+
+    };
+
+}
+
+
+if(cancelUpdateButton){
+
+    cancelUpdateButton.onclick = () => {
+
+        updateCreator.style.display = "none";
+
+    };
+
+}
