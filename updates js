@@ -1,3 +1,5 @@
+console.log("Updates JS loaded");
+
 const addUpdateButton =
 document.getElementById("addUpdateButton");
 
