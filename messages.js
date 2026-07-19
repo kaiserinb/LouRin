@@ -28,24 +28,56 @@ chatBox.innerHTML="";
 
 snapshot.forEach((doc)=>{
 
-const data=doc.data();
+const data = doc.data();
 
 if(data.placeholder) return;
 
+
+// 💋 Kiss message display
+
+if(data.type === "kiss"){
+
+const kissText = document.createElement("div");
+
+kissText.className = "kissMessage";
+
+const senderName =
+data.sender === "kaiserin"
+? "Kaiserin"
+: "Louan";
+
+
+kissText.innerHTML =
+senderName +
+" sent " +
+data.amount +
+" kisses 💋";
+
+
+chatBox.appendChild(kissText);
+
+return;
+
+}
+
+
+
+// Normal message display
+
 const bubble=document.createElement("div");
+
 
 bubble.className =
 data.sender===currentUser
 ? "message sent"
 : "message received";
 
-bubble.innerHTML=`
 
-${data.text}
+bubble.innerHTML = data.text;
 
-`;
 
 chatBox.appendChild(bubble);
+
 
 });
 
