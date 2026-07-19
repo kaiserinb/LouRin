@@ -99,23 +99,6 @@ if (kissToggle) {
 
 }
 
-
-const backToMessage =
-document.getElementById("backToMessage");
-
-
-if (backToMessage) {
-
-    backToMessage.onclick = () => {
-
-        kissMode.style.display = "none";
-
-        normalInput.style.display = "flex";
-
-    };
-
-}
-
 // Kiss Counter
 
 let kissCount = 0;
@@ -154,4 +137,21 @@ if (kissButton) {
 
     };
 
-            }
+}
+
+const backToMessage =
+document.getElementById("backToMessage");
+
+
+if (backToMessage) {
+
+    backToMessage.onclick = () => {
+
+        kissMode.style.display = "none";
+
+        normalInput.style.display = "flex";
+
+    };
+
+}
+
