@@ -470,3 +470,63 @@ margin:15px 0;
 font-weight:500;
 
 }
+
+/* Updates */
+
+.updatesHeader{
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+
+#updatesFeed{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+
+.updateCard{
+
+background:white;
+
+border-radius:22px;
+
+padding:18px;
+
+border:2px solid #F8E3E3;
+
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+
+.updateCard h3{
+
+color:#A32828;
+
+margin-bottom:5px;
+
+}
+
+
+.updateDate{
+
+font-size:13px;
+
+opacity:.6;
+
+margin-bottom:12px;
+
+}
