@@ -1,5 +1,5 @@
-// LouRin AI v0.1.1 DIAGNOSTIC
-// Temporary loading test
+// LouRin AI v0.1.1
+// Browser AI + LouRin personality instructions
 
 import { pipeline } from
 "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.0.1";
@@ -202,7 +202,7 @@ If you cannot produce a useful response or something goes wrong, say:
 
 
 // ----------------------------------------
-// LOAD MODEL — DIAGNOSTIC
+// LOAD MODEL
 // ----------------------------------------
 
 let generator = null;
@@ -214,47 +214,22 @@ async function loadAI() {
         status.textContent =
             "1/4 AI script started...";
 
-        console.log("LouRin: ai.js started");
-
-        await new Promise(resolve =>
-            setTimeout(resolve, 500)
-        );
-
-
         status.textContent =
             "2/4 Connecting to AI model...";
 
-        console.log(
-            "LouRin: starting Transformers.js pipeline"
-        );
-
-
         generator = await pipeline(
             "text-generation",
-            "HuggingFaceTB/SmolLM2-135M-Instruct"
+            "HuggingFaceTB/SmolLM2-135M-Instruct",
+            {
+                dtype: "q4"
+            }
         );
-
 
         status.textContent =
             "3/4 AI model loaded!";
 
-        console.log(
-            "LouRin: model loaded successfully"
-        );
-
-
-        await new Promise(resolve =>
-            setTimeout(resolve, 700)
-        );
-
-
         status.textContent =
             "4/4 I'm ready ><";
-
-        console.log(
-            "LouRin: AI ready"
-        );
-
 
     } catch (error) {
 
@@ -264,20 +239,17 @@ async function loadAI() {
         );
 
         status.textContent =
-            "AI ERROR — check this message";
-
-        addMessage(
-            "So.. this is an error. I can't think of a response! Let's change the topic.",
-            "ai"
-        );
+            "AI ERROR — " + (error.message || "Model could not load.");
 
     }
 
 }
 
+loadAI();
+
 
 // ----------------------------------------
-// ADD MESSAGE
+// ADD MESSAGE TO SCREEN
 // ----------------------------------------
 
 function addMessage(text, type) {
@@ -298,9 +270,6 @@ function addMessage(text, type) {
         chatMessages.scrollHeight;
 
 }
-
-
-loadAI();
 
 
 // ----------------------------------------
