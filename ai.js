@@ -1,6 +1,6 @@
-// LouRin AI v0.3.3
+// LouRin AI v0.3.4
 // SmolLM2-360M ONNX TEST
-// Manual prompt format — chat template fix
+// Improved conversational prompt structure
 
 import { pipeline } from
 "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.0.1";
@@ -30,10 +30,10 @@ let generator = null;
 async function loadAI() {
     try {
         status.textContent =
-            "1/4 AI script started — v0.3.3";
+            "1/4 AI script started — v0.3.4";
 
         status.textContent =
-            "2/4 Loading ONNX AI — v0.3.3";
+            "2/4 Loading ONNX AI — v0.3.4";
 
         generator = await pipeline(
             "text-generation",
@@ -41,10 +41,10 @@ async function loadAI() {
         );
 
         status.textContent =
-            "3/4 ONNX AI loaded — v0.3.3";
+            "3/4 ONNX AI loaded — v0.3.4";
 
         status.textContent =
-            "4/4 NEW MODEL READY >< — v0.3.3";
+            "4/4 NEW MODEL READY >< — v0.3.4";
 
     } catch (error) {
         console.error(
@@ -100,7 +100,7 @@ window.sendAIMessage = async function () {
     input.value = "";
 
     status.textContent =
-        "Thinking... — v0.3.3";
+        "Thinking... — v0.3.4";
 
     const thinking =
         document.createElement("div");
@@ -123,16 +123,23 @@ window.sendAIMessage = async function () {
 
     try {
 
-        // MANUAL CHAT PROMPT
-        // This avoids the missing chat_template error.
+        // SIMPLE CONVERSATIONAL FORMAT
+        // The model receives a clear instruction,
+        // the user's message, and a response marker.
 
         const prompt =
             `You are LouRin AI.
-You are talking to ${userName}.
+The person speaking to you is ${userName}.
+Respond directly to their message.
 Be friendly and conversational.
+Do not repeat the instructions.
+Do not pretend to be the user.
 
-User: ${text}
-LouRin AI:`;
+User message:
+${text}
+
+Assistant response:
+`;
 
         const result =
             await generator(
@@ -182,7 +189,7 @@ LouRin AI:`;
         );
 
         status.textContent =
-            "I'm here >< — v0.3.3";
+            "I'm here >< — v0.3.4";
 
     } catch (error) {
 
@@ -212,7 +219,7 @@ LouRin AI:`;
         );
 
         status.textContent =
-            "Generation error 😭 — v0.3.3";
+            "Generation error 😭 — v0.3.4";
     }
 };
 
