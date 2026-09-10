@@ -1,4 +1,4 @@
-// LouRin AI v0.1.1
+// LouRin AI v0.1.2
 // Browser AI + LouRin personality instructions
 
 import { pipeline } from
@@ -215,18 +215,15 @@ async function loadAI() {
             "1/4 AI script started...";
 
         status.textContent =
-            "2/4 Connecting to AI model...";
+            "2/4 Connecting to tiny AI model...";
 
         generator = await pipeline(
             "text-generation",
-            "HuggingFaceTB/SmolLM2-135M-Instruct",
-            {
-                dtype: "q4"
-            }
+            "Xenova/llama2.c-stories15M"
         );
 
         status.textContent =
-            "3/4 AI model loaded!";
+            "3/4 Tiny AI loaded!";
 
         status.textContent =
             "4/4 I'm ready ><";
@@ -239,7 +236,8 @@ async function loadAI() {
         );
 
         status.textContent =
-            "AI ERROR — " + (error.message || "Model could not load.");
+            "AI ERROR — " +
+            (error.message || "Model could not load.");
 
     }
 
@@ -341,7 +339,7 @@ window.sendAIMessage = async function () {
         const result =
             await generator(prompt, {
 
-                max_new_tokens: 180,
+                max_new_tokens: 100,
 
                 temperature: 0.8,
 
