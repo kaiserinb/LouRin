@@ -1,4 +1,4 @@
-// LouRin AI v0.2.0
+// LouRin AI v0.2.1
 // Browser AI + LouRin personality instructions
 
 import { pipeline } from
@@ -320,21 +320,23 @@ window.sendAIMessage = async function () {
 
     try {
 
-        const prompt = [
+        // ----------------------------------------
+        // NORMAL TEXT PROMPT
+        // The 15M model is a text-generation model,
+        // so we use a string instead of chat messages.
+        // ----------------------------------------
 
-            {
-                role: "system",
-                content: AI_INSTRUCTIONS
-            },
+        const prompt =
+            AI_INSTRUCTIONS +
+            `
 
-            {
-                role: "user",
-                content: text
-            }
+You are talking to ${userName}.
 
-        ];
+User: ${text}
 
+LouRin AI:`;
 
+        
         const result =
             await generator(prompt, {
 
@@ -342,7 +344,9 @@ window.sendAIMessage = async function () {
 
                 temperature: 0.8,
 
-                do_sample: true
+                do_sample: true,
+
+                return_full_text: false
 
             });
 
@@ -356,31 +360,17 @@ window.sendAIMessage = async function () {
             result[0].generated_text
         ) {
 
-            const generated =
+            answer =
                 result[0].generated_text;
-
-            if (Array.isArray(generated)) {
-
-                const lastMessage =
-                    generated[generated.length - 1];
-
-                answer =
-                    lastMessage.content || "";
-
-            } else {
-
-                answer =
-                    generated;
-
-            }
 
         }
 
 
         if (!answer.trim()) {
 
-            answer =
-                "So.. this is an error. I can't think of a response! Let's change the topic.";
+            throw new Error(
+                "The AI returned an empty response."
+            );
 
         }
 
@@ -423,14 +413,20 @@ window.sendAIMessage = async function () {
         }
 
 
+        // SHOW THE REAL ERROR
+        const realError =
+            error && error.message
+                ? error.message
+                : String(error);
+
         addMessage(
-            "So.. this is an error. I can't think of a response! Let's change the topic.",
+            "AI generation error:\n" + realError,
             "ai"
         );
 
 
         status.textContent =
-            "Oops 😭";
+            "Generation error 😭";
 
     }
 
