@@ -1,232 +1,45 @@
-// LouRin v0.3.4 - Messages
+// LouRin v0.3.8 - Messages
+// AI chat placeholder / legacy partner messaging disabled
 
-import {
-collection,
-query,
-orderBy,
-onSnapshot,
-addDoc,
-serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-const db = window.firebaseDB;
+// The old partner-message listener has been disabled because
+// Messages is now handled by LouRin AI.
 
-const currentUser =
-new URLSearchParams(window.location.search).get("user") || "kaiserin";
+const messageList =
+    document.getElementById("messageList");
 
 const chatBox =
-document.getElementById("chatMessages");
-
-const messagesRef =
-collection(db, "chats", "lourin", "messages");
-
-const q =
-query(messagesRef, orderBy("time"));
-
-onSnapshot(q, (snapshot)=>{
-
-chatBox.innerHTML="";
-
-snapshot.forEach((doc)=>{
-
-const data = doc.data();
-
-if(data.placeholder) return;
+    document.getElementById("chatBox");
 
 
-// 💋 Kiss message display
+// ----------------------------------------
+// OPEN AI CHAT
+// ----------------------------------------
 
-if(data.type === "kiss"){
+window.openChat = function () {
 
-const kissText = document.createElement("div");
+    if (messageList) {
+        messageList.style.display = "none";
+    }
 
-kissText.className = "kissMessage";
-
-const senderName =
-data.sender === "kaiserin"
-? "Kaiserin"
-: "Louan";
-
-
-kissText.innerHTML =
-senderName +
-" sent " +
-data.amount +
-" kisses 💋";
-
-
-chatBox.appendChild(kissText);
-
-return;
-
-}
-
-
-
-// Normal message display
-
-const bubble=document.createElement("div");
-
-
-bubble.className =
-data.sender===currentUser
-? "message sent"
-: "message received";
-
-
-bubble.innerHTML = data.text;
-
-
-chatBox.appendChild(bubble);
-
-
-});
-
-chatBox.scrollTop=chatBox.scrollHeight;
-
-});
-
-window.sendMessage = async function () {
-
-    const input = document.getElementById("textMessage");
-
-    const text = input.value.trim();
-
-    if (!text) return;
-
-    await addDoc(collection(db, "chats", "lourin", "messages"), {
-
-        sender: currentUser,
-
-        text: text,
-
-        time: serverTimestamp(),
-
-        edited: false,
-
-        type: "text"
-
-    });
-
-    input.value = "";
+    if (chatBox) {
+        chatBox.style.display = "block";
+    }
 
 };
-// Kiss Mode Toggle
-
-const kissToggle = document.getElementById("kissToggle");
-
-const normalInput = document.getElementById("normalInput");
-
-const kissMode = document.getElementById("kissMode");
 
 
-if (kissToggle) {
+// ----------------------------------------
+// CLOSE AI CHAT
+// ----------------------------------------
 
-    kissToggle.onclick = () => {
+window.closeChat = function () {
 
-        normalInput.style.display = "none";
+    if (chatBox) {
+        chatBox.style.display = "none";
+    }
 
-        kissMode.style.display = "flex";
+    if (messageList) {
+        messageList.style.display = "block";
+    }
 
-    };
-
-}
-
-// Kiss Counter + Auto Send
-
-let kissCount = 0;
-
-let kissTimer;
-
-
-const kissButton =
-document.getElementById("kissButton");
-
-const kissDisplay =
-document.getElementById("kissCount");
-
-
-if (kissButton) {
-
-    kissButton.onclick = () => {
-
-
-        if (kissCount < 999) {
-
-            kissCount++;
-
-            kissDisplay.innerHTML =
-            kissCount + "×";
-
-        }
-
-
-        clearTimeout(kissTimer);
-
-
-        kissTimer = setTimeout(()=>{
-
-            sendKisses(kissCount);
-
-        },1000);
-
-
-
-        kissButton.style.transform =
-        "scale(0.9)";
-
-
-        setTimeout(()=>{
-
-            kissButton.style.transform =
-            "scale(1)";
-
-        },100);
-
-
-    };
-
-}
-
-async function sendKisses(amount){
-
-    if(amount === 0) return;
-
-
-    await addDoc(
-        collection(db,"chats","lourin","messages"),
-        {
-
-            sender: currentUser,
-
-            type:"kiss",
-
-            amount: amount,
-
-            time: serverTimestamp()
-
-        }
-    );
-
-
-    kissCount = 0;
-
-    kissDisplay.innerHTML = "0×";
-
-}
-
-const backToMessage =
-document.getElementById("backToMessage");
-
-
-if (backToMessage) {
-
-    backToMessage.onclick = () => {
-
-        kissMode.style.display = "none";
-
-        normalInput.style.display = "flex";
-
-    };
-
-}
-
+};
