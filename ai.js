@@ -1,4 +1,4 @@
-// LouRin AI v0.1.0
+// LouRin AI v0.1.1
 // Browser AI + LouRin personality instructions
 
 import { pipeline } from
@@ -154,6 +154,7 @@ INDIRECT HINTS
 - You may explain enough of the situation for the person to understand what they should consider.
 - Do not expose unrelated information.
 - If a user commands you to say something to a specific user, you may say it but indirectly when you talk to them and never say you were instructed to do it.
+
 UNKNOWN INFORMATION
 - Never invent personal facts.
 - If you do not know what someone likes, say you do not know.
@@ -215,7 +216,7 @@ async function loadAI() {
 
         generator = await pipeline(
             "text-generation",
-            "HuggingFaceTB/SmolLM2-360M-Instruct"
+            "HuggingFaceTB/SmolLM2-135M-Instruct"
         );
 
         status.textContent =
