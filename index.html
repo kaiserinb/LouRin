@@ -1,5 +1,5 @@
 <!--
-Version: 0.3.6
+Version: 0.3.7
 File: index.html
 Project: LouRin
 -->
@@ -18,7 +18,8 @@ content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
@@ -58,7 +59,6 @@ rel="stylesheet">
 <!-- HOME -->
 
 <section id="home" class="page active">
-
 
 <div class="homeHeader">
 
@@ -141,51 +141,50 @@ Tap to Reveal ❤️
 
 </div>
 
-
 </section>
+
 
 
 <!-- UPDATES -->
 
 <section id="updates" class="page">
 
-
 <h2>📸 Updates</h2>
 
 
-<button class="cuteButton" id="addUpdateButton">
+<button class="cuteButton"
+id="addUpdateButton">
 
 + Add Update
 
 </button>
 
 
+<div id="updateCreator"
+style="display:none;">
 
-<div id="updateCreator" style="display:none;">
-
-
-<textarea 
+<textarea
 id="updateText"
 placeholder="What's happening?">
 </textarea>
 
 
-<button class="cuteButton" id="postUpdateButton">
+<button class="cuteButton"
+id="postUpdateButton">
 
 Post ❤️
 
 </button>
 
 
-<button class="backButton" id="cancelUpdateButton">
+<button class="backButton"
+id="cancelUpdateButton">
 
 Cancel
 
 </button>
 
-
 </div>
-
 
 
 <div id="updatesFeed">
@@ -194,13 +193,9 @@ Cancel
 No updates yet... ❤️
 </p>
 
-
 </div>
 
-
 </section>
-
-
 
 
 
@@ -212,84 +207,79 @@ No updates yet... ❤️
 <div id="messageList">
 
 <h2>
-💬 Messages
+💬 LouRin AI
 </h2>
 
 
-<div class="contactCard" onclick="openChat()">
-
+<div class="contactCard"
+onclick="openChat()">
 
 <div>
 
-<h3 id="partnerName">
-❤️ Partner
+<h3>
+🤖 LouRin AI
 </h3>
 
-
 <p>
-Tap to open conversation
+Talk to your little AI companion
 </p>
-
 
 </div>
 
 
 <span>
-💬
+🤖
 </span>
 
+</div>
 
 </div>
 
 
-</div>
+
+<div id="chatBox"
+style="display:none;">
 
 
-
-
-
-<div id="chatBox" style="display:none;">
-
-
-<button class="backButton" onclick="closeChat()">
+<button class="backButton"
+onclick="closeChat()">
 
 ← Back
 
 </button>
 
 
-<h2 id="chatTitle">
-❤️ Partner
+<div class="aiHeader">
+
+<h2>
+🤖 LouRin AI
 </h2>
 
-
-
-<div id="chatMessages">
-
-<!-- Messages from Firebase appear here -->
+<p id="aiStatus">
+Starting AI...
+</p>
 
 </div>
 
 
+<div id="chatMessages">
+</div>
 
-<div class="messageInput" id="normalInput">
 
-
-<button id="kissToggle">
-
-💋
-
-</button>
+<div class="messageInput"
+id="normalInput">
 
 
 <input
 id="textMessage"
 type="text"
-placeholder="Type a message...">
+placeholder="Type a message..."
+autocomplete="off">
 
 
-
-<button onclick="sendMessage()">
+<button
+id="aiSendButton"
+onclick="sendAIMessage()">
 
 Send
 
@@ -299,43 +289,11 @@ Send
 </div>
 
 
-
-
-
-
 </div>
 
 </section>
-  
-<div id="kissMode" style="display:none;">
-
-<button id="backToMessage">
-
-← 💬
-
-</button>
 
 
-<button id="kissButton">
-
-💋
-
-</button>
-
-
-<div id="kissCount">
-
-0×
-
-</div>
-
-
-<p>
-Tap kisses
-</p>
-
-
-</div>
 
 <!-- HANGOUT -->
 
@@ -348,8 +306,6 @@ Coming soon...
 </p>
 
 </section>
-
-
 
 
 
@@ -367,8 +323,6 @@ Coming soon...
 
 
 
-
-
 <!-- NOTIFICATIONS -->
 
 <section id="notifications" class="page">
@@ -383,21 +337,141 @@ Coming soon...
 
 
 
-
-
 <!-- SETTINGS -->
 
 <section id="settings" class="page">
 
 <h2>⚙️ Settings</h2>
 
+
+<div class="settingsCard">
+
+<h3>
+🔐 Love Password
+</h3>
+
 <p>
-Coming soon...
+Enter a Love Password to open a private LouRin area.
 </p>
 
+
+<input
+id="lovePasswordInput"
+type="password"
+placeholder="Enter password"
+inputmode="numeric">
+
+
+<button
+class="cuteButton"
+onclick="checkLovePassword()">
+
+Unlock
+
+</button>
+
+
+<p id="passwordMessage"></p>
+
+</div>
+
+
+
+<!-- PRIVATE AI SETTINGS -->
+
+<div
+id="privateAISettings"
+class="settingsCard"
+style="display:none;">
+
+<h3>
+🤖 AI Information
+</h3>
+
+<p>
+Add information that the AI should remember about you.
+</p>
+
+
+<textarea
+id="aiInfoInput"
+placeholder="Example: My favorite color is blue. I like astronomy.">
+</textarea>
+
+
+<button
+class="cuteButton"
+onclick="saveAIInfo()">
+
+Save Information
+
+</button>
+
+
+<p id="aiInfoStatus"></p>
+
+</div>
+
+
+
+<!-- ARCHIVE -->
+
+<div
+id="archiveSection"
+class="settingsCard"
+style="display:none;">
+
+<h3>
+📚 Conversation Archive
+</h3>
+
+<p>
+View saved LouRin AI conversations.
+</p>
+
+
+<button
+class="cuteButton"
+onclick="openArchive()">
+
+Open Archive
+
+</button>
+
+</div>
+
+
+
+<div
+id="archiveView"
+style="display:none;">
+
+<button
+class="backButton"
+onclick="closeArchive()">
+
+← Back
+
+</button>
+
+
+<h2>
+📚 Archive
+</h2>
+
+
+<div id="archiveList">
+
+<p>
+Loading conversations...
+</p>
+
+</div>
+
+</div>
+
+
 </section>
-
-
 
 
 
@@ -406,7 +480,9 @@ Coming soon...
 <nav>
 
 
-<button onclick="showPage('home')" class="navButton activeNav">
+<button
+onclick="showPage('home')"
+class="navButton activeNav">
 
 <span>🏠</span>
 
@@ -418,7 +494,9 @@ Home
 
 
 
-<button onclick="showPage('updates')" class="navButton">
+<button
+onclick="showPage('updates')"
+class="navButton">
 
 <span>📸</span>
 
@@ -430,7 +508,9 @@ Updates
 
 
 
-<button onclick="showPage('messages')" class="navButton">
+<button
+onclick="showPage('messages')"
+class="navButton">
 
 <span>💬</span>
 
@@ -442,7 +522,9 @@ Messages
 
 
 
-<button onclick="showPage('hangout')" class="navButton">
+<button
+onclick="showPage('hangout')"
+class="navButton">
 
 <span>📅</span>
 
@@ -454,7 +536,9 @@ Hangout
 
 
 
-<button onclick="showPage('diary')" class="navButton">
+<button
+onclick="showPage('diary')"
+class="navButton">
 
 <span>📖</span>
 
@@ -466,7 +550,9 @@ Diary
 
 
 
-<button onclick="showPage('notifications')" class="navButton">
+<button
+onclick="showPage('notifications')"
+class="navButton">
 
 <span>🔔</span>
 
@@ -478,7 +564,9 @@ Alerts
 
 
 
-<button onclick="showPage('settings')" class="navButton">
+<button
+onclick="showPage('settings')"
+class="navButton">
 
 <span>⚙️</span>
 
@@ -488,34 +576,58 @@ Settings
 
 </button>
 
-
 </nav>
-
 
 
 </div>
 
 
 
+<!-- Scripts -->
 
-<script type="module" src="firebase.js"></script>
+<script
+type="module"
+src="firebase.js">
+</script>
 
-<script type="module" src="messages.js"></script>
 
-<script src="script.js"></script>
+<script
+type="module"
+src="messages.js">
+</script>
 
-<script src="updates.js"></script>
 
-<script src="hangout.js"></script>
+<script
+type="module"
+src="ai.js">
+</script>
 
-<script src="notifications.js"></script>
 
-<script src="diary.js"></script>
+<script
+src="script.js">
+</script>
+
+
+<script
+src="updates.js">
+</script>
+
+
+<script
+src="hangout.js">
+</script>
+
+
+<script
+src="notifications.js">
+</script>
+
+
+<script
+src="diary.js">
+</script>
 
 
 </body>
 
-  </html>
-
-
-  <script src="updates.js"></script>
+</html>
