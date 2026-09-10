@@ -1,6 +1,6 @@
-// LouRin AI v0.3.1
-// SmolLM2-135M-Instruct ONNX TEST
-// Tiny prompt — personality rules NOT added yet
+// LouRin AI v0.3.2
+// SmolLM2-360M-Instruct ONNX TEST
+// Everything else unchanged from v0.3.1
 
 import { pipeline } from
 "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.0.1";
@@ -36,21 +36,21 @@ async function loadAI() {
     try {
 
         status.textContent =
-            "1/4 AI script started — v0.3.1";
+            "1/4 AI script started — v0.3.2";
 
         status.textContent =
-            "2/4 Loading ONNX AI — v0.3.1";
+            "2/4 Loading ONNX AI — v0.3.2";
 
         generator = await pipeline(
             "text-generation",
-            "onnx-community/SmolLM2-135M-Instruct-ONNX-MHA"
+            "onnx-community/SmolLM2-360M-ONNX"
         );
 
         status.textContent =
-            "3/4 ONNX AI loaded — v0.3.1";
+            "3/4 ONNX AI loaded — v0.3.2";
 
         status.textContent =
-            "4/4 NEW MODEL READY >< — v0.3.1";
+            "4/4 NEW MODEL READY >< — v0.3.2";
 
     } catch (error) {
 
@@ -126,7 +126,7 @@ window.sendAIMessage = async function () {
     input.value = "";
 
     status.textContent =
-        "Thinking... — v0.3.1";
+        "Thinking... — v0.3.2";
 
 
     const thinking =
@@ -260,7 +260,7 @@ Be friendly and conversational.`
 
 
         status.textContent =
-            "I'm here >< — v0.3.1";
+            "I'm here >< — v0.3.2";
 
 
     } catch (error) {
@@ -297,7 +297,7 @@ Be friendly and conversational.`
 
 
         status.textContent =
-            "Generation error 😭 — v0.3.1";
+            "Generation error 😭 — v0.3.2";
 
     }
 
