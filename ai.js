@@ -1,17 +1,28 @@
-// LouRin AI v0.3.0
-// MODEL SWITCH TEST
-// SmolLM2-135M-Instruct
+// LouRin AI v0.3.1
+// SmolLM2-135M-Instruct ONNX TEST
+// Tiny prompt — personality rules NOT added yet
 
 import { pipeline } from
 "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.0.1";
 
 const params = new URLSearchParams(window.location.search);
-const currentUser = params.get("user") || "kaiserin";
-const userName = currentUser === "louan" ? "Louan" : "Kaiserin";
 
-const chatMessages = document.getElementById("chatMessages");
-const input = document.getElementById("textMessage");
-const status = document.getElementById("aiStatus");
+const currentUser =
+    params.get("user") || "kaiserin";
+
+const userName =
+    currentUser === "louan"
+        ? "Louan"
+        : "Kaiserin";
+
+const chatMessages =
+    document.getElementById("chatMessages");
+
+const input =
+    document.getElementById("textMessage");
+
+const status =
+    document.getElementById("aiStatus");
 
 let generator = null;
 
@@ -25,21 +36,21 @@ async function loadAI() {
     try {
 
         status.textContent =
-            "1/4 AI script started — v0.3.0";
+            "1/4 AI script started — v0.3.1";
 
         status.textContent =
-            "2/4 Loading SmolLM2 — v0.3.0";
+            "2/4 Loading ONNX AI — v0.3.1";
 
         generator = await pipeline(
             "text-generation",
-            "HuggingFaceTB/SmolLM2-135M-Instruct"
+            "onnx-community/SmolLM2-135M-Instruct-ONNX-MHA"
         );
 
         status.textContent =
-            "3/4 SmolLM2 loaded — v0.3.0";
+            "3/4 ONNX AI loaded — v0.3.1";
 
         status.textContent =
-            "4/4 NEW MODEL READY >< — v0.3.0";
+            "4/4 NEW MODEL READY >< — v0.3.1";
 
     } catch (error) {
 
@@ -50,7 +61,8 @@ async function loadAI() {
 
         status.textContent =
             "AI ERROR — " +
-            (error.message || "Model could not load.");
+            (error.message ||
+             "Model could not load.");
 
     }
 
@@ -102,19 +114,21 @@ window.sendAIMessage = async function () {
         );
 
         return;
+
     }
 
 
-    // Show user's message
-    addMessage(text, "user");
+    addMessage(
+        text,
+        "user"
+    );
 
     input.value = "";
 
     status.textContent =
-        "Thinking... — v0.3.0";
+        "Thinking... — v0.3.1";
 
 
-    // Thinking bubble
     const thinking =
         document.createElement("div");
 
@@ -127,7 +141,9 @@ window.sendAIMessage = async function () {
     thinking.id =
         "aiThinking";
 
-    chatMessages.appendChild(thinking);
+    chatMessages.appendChild(
+        thinking
+    );
 
     chatMessages.scrollTop =
         chatMessages.scrollHeight;
@@ -135,7 +151,6 @@ window.sendAIMessage = async function () {
 
     try {
 
-        // VERY SMALL TEST PROMPT
         const messages = [
 
             {
@@ -155,17 +170,15 @@ Be friendly and conversational.`
 
 
         const result =
-            await generator(messages, {
-
-                max_new_tokens: 20,
-
-                do_sample: true,
-
-                temperature: 0.7,
-
-                return_full_text: false
-
-            });
+            await generator(
+                messages,
+                {
+                    max_new_tokens: 20,
+                    do_sample: true,
+                    temperature: 0.7,
+                    return_full_text: false
+                }
+            );
 
 
         console.log(
@@ -177,7 +190,6 @@ Be friendly and conversational.`
         let answer = "";
 
 
-        // SmolLM2 chat output
         if (
             result &&
             result[0] &&
@@ -188,10 +200,17 @@ Be friendly and conversational.`
                 result[0].generated_text;
 
 
-            if (Array.isArray(generated)) {
+            if (
+                Array.isArray(
+                    generated
+                )
+            ) {
 
                 const lastMessage =
-                    generated[generated.length - 1];
+                    generated[
+                        generated.length - 1
+                    ];
+
 
                 if (
                     lastMessage &&
@@ -222,7 +241,6 @@ Be friendly and conversational.`
         }
 
 
-        // Remove thinking bubble
         const thinkingBubble =
             document.getElementById(
                 "aiThinking"
@@ -242,7 +260,7 @@ Be friendly and conversational.`
 
 
         status.textContent =
-            "I'm here >< — v0.3.0";
+            "I'm here >< — v0.3.1";
 
 
     } catch (error) {
@@ -272,13 +290,14 @@ Be friendly and conversational.`
 
 
         addMessage(
-            "AI ERROR:\n" + realError,
+            "AI ERROR:\n" +
+            realError,
             "ai"
         );
 
 
         status.textContent =
-            "Generation error 😭 — v0.3.0";
+            "Generation error 😭 — v0.3.1";
 
     }
 
